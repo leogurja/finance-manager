@@ -4,8 +4,7 @@ import { db } from "~/lib/db";
 import { createPostSchema, type CreatePostSchema } from "~/schemas/post";
 import { DatabaseError } from "~/lib/errors/database-error";
 import { cache } from "react";
-import { err, fromPromise, ok } from "neverthrow";
-import z from "zod";
+import { err, fromPromise } from "neverthrow";
 
 export const listPosts = cache(async () => {
   const rows = await fromPromise(
@@ -29,15 +28,6 @@ export function createPost(input: CreatePostSchema) {
     (err: unknown) =>
       new DatabaseError("failed to create post", { cause: err }),
   ).map((data) => ({ id: data.id }));
-}
-
-const helloSchema = z.object({ text: z.string() });
-export function hello(input: z.infer<typeof helloSchema>) {
-  const { data, error } = helloSchema.safeParse(input);
-
-  if (error) return err(error);
-
-  return ok({ greeting: `Hello ${data.text}` });
 }
 
 export function getLatest() {

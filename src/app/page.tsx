@@ -1,14 +1,11 @@
 import Link from "next/link";
 
 import { LatestPost } from "~/app/_components/post";
-import { getLatest, hello } from "~/data/post/post";
+import { getLatest } from "~/data/post/post";
 import { serializeResultAsync } from "~/lib/utils/serialize-result";
 
 export default async function Home() {
-  const helloResult = hello({ text: "from tRPC" });
-  if (helloResult.isErr()) throw helloResult.error;
-
-  const latestPromise = serializeResultAsync(getLatest());
+  const latestPromise = getLatest();
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
@@ -40,11 +37,8 @@ export default async function Home() {
             </div>
           </Link>
         </div>
-        <div className="flex flex-col items-center gap-2">
-          <p className="text-2xl text-white">{helloResult}</p>
-        </div>
 
-        <LatestPost latestPromise={latestPromise} />
+        <LatestPost latestPromise={serializeResultAsync(latestPromise)} />
       </div>
     </main>
   );

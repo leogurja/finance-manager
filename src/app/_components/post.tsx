@@ -26,8 +26,8 @@ export function LatestPost({ latestPromise }: LatestPostProps) {
   });
 
   const onSubmit = handleSubmit(async (values) => {
-    const result = await createPostAction(values);
-    if (result.error) throw result.error;
+    const { id } = await createPostAction(values);
+    console.log(id);
   });
 
   return (
