@@ -1,45 +1,20 @@
-import { FlatCompat } from "@eslint/eslintrc";
-import tseslint from "typescript-eslint";
+import { config, base, globals } from "@gurja/eslint-config";
+import next from "@gurja/eslint-config/next";
 
-const compat = new FlatCompat({
-  baseDirectory: import.meta.dirname,
-});
+// @ts-expect-error this lib has no type declarations
+import neverthrowPlugin from "eslint-plugin-neverthrow";
 
-export default tseslint.config(
-  {
-    ignores: [".next"],
-  },
-  ...compat.extends("next/core-web-vitals"),
-  {
-    files: ["**/*.ts", "**/*.tsx"],
-    extends: [
-      ...tseslint.configs.recommended,
-      ...tseslint.configs.recommendedTypeChecked,
-      ...tseslint.configs.stylisticTypeChecked,
-    ],
-    rules: {
-      "@typescript-eslint/array-type": "off",
-      "@typescript-eslint/consistent-type-definitions": "off",
-      "@typescript-eslint/consistent-type-imports": [
-        "warn",
-        { prefer: "type-imports", fixStyle: "inline-type-imports" },
-      ],
-      "@typescript-eslint/no-unused-vars": [
-        "warn",
-        { argsIgnorePattern: "^_" },
-      ],
-      "@typescript-eslint/require-await": "off",
-      "@typescript-eslint/no-misused-promises": [
-        "error",
-        { checksVoidReturn: { attributes: false } },
-      ],
-    },
-  },
+export default config(
+  base(),
+  next(),
   {
     languageOptions: {
-      parserOptions: {
-        projectService: true,
+      globals: {
+        ...globals.browser,
+        ...globals.serviceworker,
+        ...globals.node,
       },
     },
   },
+  neverthrowPlugin.configs.recommended,
 );

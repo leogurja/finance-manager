@@ -1,4 +1,10 @@
-/** @type {import('prettier').Config & import('prettier-plugin-tailwindcss').PluginOptions} */
-export default {
-  plugins: ["prettier-plugin-tailwindcss"],
+/** @type {import("prettier").Config} */
+const config = {
+  plugins: [
+    "prettier-plugin-organize-imports",
+    "prettier-plugin-packagejson",
+    "prettier-plugin-tailwindcss",
+  ],
 };
+
+export default config;
