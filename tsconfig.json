@@ -34,7 +34,10 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"]
-    }
+    },
+
+    /* for better next-intl inferrence */
+    "allowArbitraryExtensions": true
   },
   "include": [
     "next-env.d.ts",

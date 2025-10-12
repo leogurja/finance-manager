@@ -2,15 +2,14 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { Post } from "@prisma/client";
-import type { ResultAsync } from "neverthrow";
-import { use, useActionState, useState } from "react";
+import { use } from "react";
 import { useForm } from "react-hook-form";
-import { createPostAction } from "~/lib/actions/create-post";
+import { createPostAction } from "~/lib/mutations/create-post";
 import type { SerializedResult } from "~/lib/utils/serialize-result";
 import { createPostSchema } from "~/schemas/post";
 
 interface LatestPostProps {
-  latestPromise: Promise<SerializedResult<Post | null, Error>>;
+  latestPromise: Promise<SerializedResult<Post | null>>;
 }
 
 export function LatestPost({ latestPromise }: LatestPostProps) {
@@ -26,8 +25,9 @@ export function LatestPost({ latestPromise }: LatestPostProps) {
   });
 
   const onSubmit = handleSubmit(async (values) => {
-    const { id } = await createPostAction(values);
-    console.log(id);
+    const [value, err] = await createPostAction(values);
+    if (err) throw err;
+    console.log(value.id);
   });
 
   return (
