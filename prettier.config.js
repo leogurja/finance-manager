@@ -5,6 +5,9 @@ const config = {
     "prettier-plugin-packagejson",
     "prettier-plugin-tailwindcss",
   ],
+  tailwindStylesheet: "./src/styles/globals.css",
+  tailwindFunctions: ["cn", "cva", "tv"],
+  trailingComma: "all",
 };
 
 export default config;

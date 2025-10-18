@@ -1,1 +1,35 @@
-{}
+{
+  "NotFoundPage": {
+    "title": "Página não encontrada"
+  },
+  "Metadata": {
+    "title": "Finance Manager"
+  },
+  "LoginForm": {
+    "continueWith": "Continuar com {provider}",
+    "or": "Ou entre com",
+    "email": "Email",
+    "password": "Senha",
+    "welcomeBack": "Bem vindo de volta",
+    "loginWithProvider": "Entre com um provedor",
+    "forgotPassword": "Esqueceu sua senha?",
+    "login": "Entrar",
+    "dontHaveAnAccount": "Não tem uma conta?",
+    "signUp": "Criar conta",
+    "agreement": "Ao continuar, você concorda com nossos <terms>Termos de Serviço</terms> e <policy>Política de Privacidade</policy>."
+  },
+  "Sidebar": {
+    "buckets": "Potes",
+    "dashboard": "Dashboard",
+    "essentials": "Necessidades",
+    "leisure": "Lazer",
+    "growth": "Crescimento",
+    "settings": "Configurações",
+    "profile": "Seu perfil",
+    "tasks": "Pendências"
+  },
+  "OnboardingPage": {
+    "bucketsExplanation": "Vamos te ajudar a dividir seu dinheiro em três potes — Necessidades, Lazer, and Crescimento.",
+    "setup": "Let's set it up"
+  }
+}

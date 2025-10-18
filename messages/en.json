@@ -1,5 +1,35 @@
 {
   "NotFoundPage": {
     "title": "Page not found"
+  },
+  "Metadata": {
+    "title": "Finance Manager"
+  },
+  "LoginForm": {
+    "continueWith": "Continue with {provider}",
+    "or": "Or continue with",
+    "email": "Email",
+    "password": "Password",
+    "welcomeBack": "Welcome back",
+    "loginWithProvider": "Login with a provider",
+    "forgotPassword": "Forgot your password?",
+    "login": "Login",
+    "dontHaveAnAccount": "Don't have an account?",
+    "signUp": "Sign up",
+    "agreement": "By clicking continue, you agree to our <terms>Terms of Service</terms> and <policy>Privacy Policy</policy>."
+  },
+  "Sidebar": {
+    "buckets": "Buckets",
+    "dashboard": "Dashboard",
+    "leisure": "Leisure",
+    "essentials": "Essentials",
+    "growth": "Growth",
+    "settings": "Settings",
+    "profile": "Your profile",
+    "tasks": "Tasks"
+  },
+  "OnboardingPage": {
+    "bucketsExplanation": "We'll help you manage your money in three simple buckets — Essentials, Fun, and Growth.",
+    "setup": "Let's set it up"
   }
 }

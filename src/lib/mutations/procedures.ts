@@ -1,17 +1,16 @@
-import { createServerActionProcedure } from "zsa";
+import { createSafeActionClient } from "next-safe-action";
 
-export const publicProcedure = createServerActionProcedure().handler(
-  () => ({}),
-);
+import { headers } from "next/headers";
+import { auth } from "~/lib/auth/server";
 
-export const privateProcedure = createServerActionProcedure(
-  publicProcedure,
-).handler(async () => {
-  return {
-    user: {
-      id: "1",
-      email: "leo@gurgel.io",
-      name: "Leonardo Gurgel",
+export const publicProcedure = createSafeActionClient();
+
+export const privateProcedure = publicProcedure.use(async ({ next }) => {
+  const session = await auth.api.getSession({ headers: await headers() });
+
+  return next({
+    ctx: {
+      session,
     },
-  };
+  });
 });

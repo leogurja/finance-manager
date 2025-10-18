@@ -1,10 +1,14 @@
-import { hasLocale } from "next-intl";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import { routing } from "~/i18n/routing";
+import { cn } from "~/lib/utils/cn";
 
-const inter = Inter({ subsets: ["latin", "latin-ext"] });
+const inter = Inter({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-inter",
+});
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -12,6 +16,8 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: LayoutProps<"/[locale]">) {
   const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) notFound();
+
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
   return {
@@ -30,11 +36,11 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} dir={getHTMLTextDir(locale)}>
-      <body className={inter.className}>
-        <IntlayerClientProvider locale={locale}>
-          {children}
-        </IntlayerClientProvider>
+    <html lang={locale}>
+      <body className={cn("relative", inter.variable)}>
+        <NextIntlClientProvider locale={locale}>
+          <div className="isolate">{children}</div>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -1,6 +1,67 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
+  --font-sans:
+    var(--font-inter), ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+@theme inline {
+  --default-transition-duration: 250ms;
+
+  --color-background: var(--color-zinc-950);
+  --color-foreground: var(--color-zinc-50);
+  --color-card: var(--color-zinc-900);
+  --color-card-foreground: var(--color-zinc-50);
+  --color-popover: var(--color-zinc-900);
+  --color-popover-foreground: var(--color-zinc-50);
+  --color-primary: var(--color-emerald-500);
+  --color-primary-foreground: var(--color-zinc-50);
+  --color-secondary: var(--color-zinc-800);
+  --color-secondary-foreground: var(--color-zinc-50);
+  --color-muted: var(--color-zinc-800);
+  --color-muted-foreground: var(--color-zinc-400);
+  --color-accent: var(--color-zinc-800);
+  --color-accent-foreground: var(--color-zinc-50);
+  --color-destructive: var(--color-red-400);
+  --color-border: var(--color-zinc-800);
+  --color-input: var(--color-zinc-700);
+  --color-ring: var(--color-green-700);
+  --color-sidebar: var(--color-zinc-900);
+  --color-sidebar-foreground: var(--color-zinc-50);
+  --color-sidebar-primary: var(--color-emerald-500);
+  --color-sidebar-primary-foreground: var(--color-green-900);
+  --color-sidebar-accent: var(--color-zinc-800);
+  --color-sidebar-accent-foreground: var(--color-zinc-50);
+  --color-sidebar-border: var(--color-zinc-800);
+  --color-sidebar-ring: var(--color-green-700);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Scale up hit targets on high resolution mobile devices. */
+@media (min-resolution: 200dpi) {
+  html {
+    font-size: 18px;
+  }
+
+  .text-sm {
+    /* ensure minimum font size of 16px */
+    font-size: 0.9rem;
+  }
+}
+
+body {
+  @apply bg-white dark:bg-zinc-900;
+  color-scheme: dark light;
 }

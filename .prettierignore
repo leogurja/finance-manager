@@ -1,0 +1,21 @@
+# Lock files
+bun.lock
+
+# Build outputs
+.next/
+dist/
+build/
+out/
+
+# Dependencies
+node_modules/
+
+# Environment files
+.env*
+
+# Generated files
+*.generated.*
+prisma/migrations/
+
+# Logs
+*.log
