@@ -1,4 +1,4 @@
-import type { Result } from "neverthrow";
+import type { Result } from 'neverthrow';
 
 const errorMap: Record<string, number | undefined> = {
   ZodError: 400,

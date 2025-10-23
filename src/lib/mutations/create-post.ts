@@ -1,18 +1,18 @@
-"use server";
+'use server';
 
-import { fromPromise } from "neverthrow";
-import { createPostSchema } from "~/schemas/post";
-import { db } from "../db";
-import { privateProcedure } from "./procedures";
+import { fromPromise } from 'neverthrow';
+import { createPostSchema } from '~/schemas/post';
+import { db } from '../db';
+import { privateProcedure } from './procedures';
 
 export const createPostAction = privateProcedure
   .inputSchema(createPostSchema)
-  .action(async ({ parsedInput, ctx: { session } }) => {
+  .action(async ({ parsedInput }) => {
     const result = fromPromise(
       db.post.create({ data: parsedInput }),
       (error) => ({
-        type: "DATABASE_ERROR",
         error,
+        type: 'DATABASE_ERROR',
       }),
     ).map((data) => ({ id: data.id }));
 

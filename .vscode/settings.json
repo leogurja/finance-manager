@@ -1,24 +1,19 @@
 {
+  "[html][javascript][javascriptreact][typescript][typescriptreact][json][jsonc][css][tailwindcss]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.biome": "explicit",
+      "source.fixAll.ts": "explicit"
+    },
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true
+  },
+  "eslint.enable": false,
+  "i18n-ally.localesPaths": ["messages"],
   "json.schemas": [
     {
       "fileMatch": ["bun.lock"],
       "url": "https://raw.githubusercontent.com/oven-sh/bun/main/packages/bun-types/lockfile.json"
     }
   ],
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll": true
-    }
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  },
-  "json.format.enable": false,
-  "jsonc.format.enable": false,
-  "prettier.requireConfig": true,
-  "prettier.useEditorConfig": false,
-  "i18n-ally.localesPaths": ["messages"]
+  "prettier.enable": false
 }

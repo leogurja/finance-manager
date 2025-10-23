@@ -1,11 +1,11 @@
-import { Button } from "~/lib/components/atoms/button";
+import { Button } from '~/lib/components/atoms/button';
 import {
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "~/lib/components/atoms/card";
-import { cn } from "~/lib/utils/cn";
+} from '~/lib/components/atoms/card';
+import { cn } from '~/lib/utils/cn';
 
 interface ExplanationStepProps {
   goForward: () => void;
@@ -15,19 +15,19 @@ export default function ExplanationStep({ goForward }: ExplanationStepProps) {
   return (
     <div
       key="intro"
-      className="animate-in space-y-6 p-8 text-center duration-400 fade-in"
+      className="fade-in animate-in space-y-6 p-8 text-center duration-400"
     >
       <CardHeader>
-        <CardTitle className="text-3xl font-semibold">
-          Your{" "}
-          <span className="animate-in text-primary delay-400 duration-400 fade-in starting:opacity-0">
+        <CardTitle className="font-semibold text-3xl">
+          Your{' '}
+          <span className="fade-in animate-in text-primary starting:opacity-0 delay-400 duration-400">
             Buckets
           </span>
         </CardTitle>
       </CardHeader>
 
       <CardContent className="space-y-4">
-        <p className="animate-in text-muted-foreground delay-800 duration-400 fade-in starting:opacity-0">
+        <p className="fade-in animate-in text-muted-foreground starting:opacity-0 delay-800 duration-400">
           Manage your money simply — divide it into three buckets that keep life
           balanced.
         </p>
@@ -61,28 +61,25 @@ export default function ExplanationStep({ goForward }: ExplanationStepProps) {
   );
 }
 
-function Bucket({
-  name,
-  desc,
-  color,
-  delay,
-}: {
+interface BucketProps {
   name: string;
   desc: string;
   delay: string;
   color: string;
-}) {
+}
+
+function Bucket({ name, desc, color, delay }: BucketProps) {
   return (
     <div
       className={cn(
-        "flex animate-in items-center justify-center gap-3 duration-400 fade-in starting:opacity-0",
+        'fade-in flex animate-in items-center justify-center gap-3 starting:opacity-0 duration-400',
         delay,
       )}
     >
       <div className={`h-3 w-3 rounded-full ${color}`} />
       <div className="text-left">
         <p className="font-medium">{name}</p>
-        <p className="text-xs text-muted-foreground">{desc}</p>
+        <p className="text-muted-foreground text-xs">{desc}</p>
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
-import { createSafeActionClient } from "next-safe-action";
-
-import { headers } from "next/headers";
-import { auth } from "~/lib/auth/server";
+import { headers } from 'next/headers';
+import { createSafeActionClient } from 'next-safe-action';
+import { auth } from '~/lib/auth/server';
 
 export const publicProcedure = createSafeActionClient();
 

@@ -1,15 +1,13 @@
-import { useTranslations, type Locale } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
-import { use } from "react";
-import { StepManager } from "./_components/step-manager";
+import type { Locale } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
+import { use } from 'react';
+import { StepManager } from './_components/step-manager';
 
 export default function OnboardingPage({
   params,
-}: PageProps<"/[locale]/onboarding">) {
+}: PageProps<'/[locale]/onboarding'>) {
   const { locale } = use(params);
   setRequestLocale(locale as Locale);
-
-  const t = useTranslations("OnboardingPage");
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-muted p-6 md:p-10">

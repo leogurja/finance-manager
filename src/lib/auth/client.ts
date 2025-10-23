@@ -1,6 +1,6 @@
-import { magicLinkClient } from "better-auth/client/plugins";
-import { createAuthClient } from "better-auth/react";
-import "client-only";
+import { magicLinkClient } from 'better-auth/client/plugins';
+import { createAuthClient } from 'better-auth/react';
+import 'client-only';
 
 export const authClient = createAuthClient({
   plugins: [magicLinkClient()],

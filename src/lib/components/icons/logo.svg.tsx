@@ -10,6 +10,7 @@ export function LogoSvg({ className }: LogoSvgProps) {
       data-asc="0.968"
       className={className}
     >
+      <title>Finance Manager</title>
       <g fill="currentColor" transform="translate(6, 0)">
         <path d="M0 48.40L0 13.40L6.50 13.40L6.50 42.90L24.80 42.90L24.80 48.40L0 48.40Z" />
       </g>

@@ -1,9 +1,9 @@
-"use client";
-import { AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import { Card } from "~/lib/components/atoms/card";
-import ExplanationStep from "./explanation-step";
-import FormStep from "./form-step";
+'use client';
+import { AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { Card } from '~/lib/components/atoms/card';
+import ExplanationStep from './explanation-step';
+import FormStep from './form-step';
 
 export function StepManager() {
   const [index, setIndex] = useState<number>(0);

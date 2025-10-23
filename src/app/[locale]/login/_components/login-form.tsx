@@ -1,44 +1,44 @@
-"use client";
+'use client';
 
-import { useTranslations } from "next-intl";
-import { Link } from "~/i18n/navigation";
-import { authClient } from "~/lib/auth/client";
-import { Button } from "~/lib/components/atoms/button";
+import { useTranslations } from 'next-intl';
+import { Link } from '~/i18n/navigation';
+import { authClient } from '~/lib/auth/client';
+import { Button } from '~/lib/components/atoms/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "~/lib/components/atoms/card";
-import { GoogleIcon } from "~/lib/components/icons/google.svg";
+} from '~/lib/components/atoms/card';
+import { GoogleIcon } from '~/lib/components/icons/google.svg';
 import {
   Field,
   FieldDescription,
   FieldGroup,
-} from "~/lib/components/molecules/field";
-import { cn } from "~/lib/utils/cn";
+} from '~/lib/components/molecules/field';
+import { cn } from '~/lib/utils/cn';
 
 export function LoginForm({
   className,
   ...props
-}: React.ComponentProps<"div">) {
-  const t = useTranslations("LoginForm");
+}: React.ComponentProps<'div'>) {
+  const t = useTranslations('LoginForm');
 
   const loginWithGoogle = async () => {
     await authClient.signIn.social({
-      provider: "google",
-      callbackURL: "/dashboard",
-      errorCallbackURL: "/error",
-      newUserCallbackURL: "/dashboard",
+      callbackURL: '/dashboard',
+      errorCallbackURL: '/error',
+      newUserCallbackURL: '/dashboard',
+      provider: 'google',
     });
   };
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
+    <div className={cn('flex flex-col gap-6', className)} {...props}>
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="text-xl">{t("welcomeBack")}</CardTitle>
-          <CardDescription>{t("loginWithProvider")}</CardDescription>
+          <CardTitle className="text-xl">{t('welcomeBack')}</CardTitle>
+          <CardDescription>{t('loginWithProvider')}</CardDescription>
         </CardHeader>
         <CardContent>
           <form>
@@ -50,7 +50,7 @@ export function LoginForm({
                   onClick={loginWithGoogle}
                 >
                   <GoogleIcon />
-                  {t("continueWith", { provider: "Google" })}
+                  {t('continueWith', { provider: 'Google' })}
                 </Button>
               </Field>
               {/* <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card">
@@ -88,9 +88,9 @@ export function LoginForm({
         </CardContent>
       </Card>
       <FieldDescription className="px-6 text-center">
-        {t.rich("agreement", {
-          terms: (chunks) => <Link href="terms">{chunks}</Link>,
+        {t.rich('agreement', {
           policy: (chunks) => <Link href="policy">{chunks}</Link>,
+          terms: (chunks) => <Link href="terms">{chunks}</Link>,
         })}
       </FieldDescription>
     </div>

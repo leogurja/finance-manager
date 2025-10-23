@@ -1,5 +1,5 @@
-import { LogoWithText } from "~/lib/components/molecules/logo-with-text";
-import { LoginForm } from "./_components/login-form";
+import { LogoWithText } from '~/lib/components/molecules/logo-with-text';
+import { LoginForm } from './_components/login-form';
 
 export default function LoginPage() {
   return (

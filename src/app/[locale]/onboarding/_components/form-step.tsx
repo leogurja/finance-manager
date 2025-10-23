@@ -1,26 +1,26 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { useFormatter } from "next-intl";
-import { Controller, useForm, useWatch } from "react-hook-form";
-import { Button } from "~/lib/components/atoms/button";
+import { motion } from 'framer-motion';
+import { useId } from 'react';
+import { Controller, useForm, useWatch } from 'react-hook-form';
+import { Button } from '~/lib/components/atoms/button';
 import {
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "~/lib/components/atoms/card";
-import { Input } from "~/lib/components/atoms/input";
-import { Label } from "~/lib/components/atoms/label";
+} from '~/lib/components/atoms/card';
+import { Input } from '~/lib/components/atoms/input';
+import { Label } from '~/lib/components/atoms/label';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "~/lib/components/atoms/select";
-import { Separator } from "~/lib/components/atoms/separator";
-import { Slider } from "~/lib/components/atoms/slider";
+} from '~/lib/components/atoms/select';
+import { Separator } from '~/lib/components/atoms/separator';
+import { Slider } from '~/lib/components/atoms/slider';
 
 type FormValues = {
   currency: string;
@@ -35,36 +35,37 @@ interface FormStepProps {
 }
 
 export default function FormStep({ goBack }: FormStepProps) {
-  const format = useFormatter();
-  const { control, register, handleSubmit, watch, setValue } =
-    useForm<FormValues>({
-      defaultValues: {
-        currency: "BRL",
-        income: 5000,
-        essentials: 50,
-        fun: 30,
-        growth: 20,
-      },
-    });
+  const { control, register, handleSubmit, setValue } = useForm<FormValues>({
+    defaultValues: {
+      currency: 'BRL',
+      essentials: 50,
+      fun: 30,
+      growth: 20,
+      income: 5000,
+    },
+  });
 
-  const [income, essentials, fun] = useWatch({
+  const [_income, essentials, fun] = useWatch({
     control,
-    name: ["income", "essentials", "fun"],
+    name: ['income', 'essentials', 'fun'],
   });
   const growth = 100 - essentials - fun;
 
   const onSubmit = (data: FormValues) => {
     const payload = { ...data, growth };
-    console.log("Onboarding completed:", payload);
+    console.log('Onboarding completed:', payload);
     // redirecionar pra dashboard depois
   };
 
   const handleSliderChange = (values: [number, number]) => {
     const newEssentials = values[0];
     const newFun = values[1] - newEssentials;
-    setValue("essentials", newEssentials);
-    setValue("fun", newFun);
+    setValue('essentials', newEssentials);
+    setValue('fun', newFun);
   };
+
+  const currencyId = useId();
+  const incomeId = useId();
 
   return (
     <motion.form
@@ -73,7 +74,7 @@ export default function FormStep({ goBack }: FormStepProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
+      transition={{ duration: 0.4, ease: 'easeOut' }}
       className="space-y-6 p-6"
     >
       <CardHeader>
@@ -85,13 +86,13 @@ export default function FormStep({ goBack }: FormStepProps) {
       <CardContent className="space-y-6">
         {/* Currency */}
         <div className="space-y-2">
-          <Label htmlFor="currency">Currency</Label>
+          <Label htmlFor={currencyId}>Currency</Label>
           <Controller
             name="currency"
             control={control}
             render={({ field }) => (
               <Select onValueChange={field.onChange} value={field.value}>
-                <SelectTrigger id="currency">
+                <SelectTrigger id={currencyId}>
                   <SelectValue placeholder="Select a currency" />
                 </SelectTrigger>
                 <SelectContent>
@@ -106,13 +107,13 @@ export default function FormStep({ goBack }: FormStepProps) {
 
         {/* Income */}
         <div className="space-y-2">
-          <Label htmlFor="income">Monthly Income</Label>
+          <Label htmlFor={incomeId}>Monthly Income</Label>
           <Input
-            id="income"
+            id={incomeId}
             type="number"
             min={0}
             step={100}
-            {...register("income", { valueAsNumber: true })}
+            {...register('income', { valueAsNumber: true })}
           />
         </div>
 
@@ -135,7 +136,7 @@ export default function FormStep({ goBack }: FormStepProps) {
             )}
           />
 
-          <div className="grid grid-cols-3 gap-2 text-center text-sm font-medium">
+          <div className="grid grid-cols-3 gap-2 text-center font-medium text-sm">
             <div>
               <p>Essentials</p>
               <p className="text-muted-foreground">{essentials}%</p>

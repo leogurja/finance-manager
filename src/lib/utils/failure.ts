@@ -5,7 +5,7 @@ export type Failure<E = Error> = {
 
 export function isFailure<E>(error: unknown): error is Failure<E> {
   return (
-    "type" in (error as Failure<E>) &&
-    typeof (error as Failure<E>).type === "string"
+    'type' in (error as Failure<E>) &&
+    typeof (error as Failure<E>).type === 'string'
   );
 }
